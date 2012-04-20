@@ -90,3 +90,15 @@ Reinsert all parts for which you do not need the insert key:
 
 > level: 1 - re-inserts the top key(s) 2 - re-inserts the top keys(s), graphs(s) and the most recent update. 3 - re-inserts the top keys(s), graphs(s) and all keys required to bootstrap the repo. This is the default level. 4 - adds redundancy for big (>7Mb) updates. 5 - re-inserts existing redundant big updates.
 
+
+## Contributing to this guide
+
+If you wish to contribute, just clone and fork this repo. 
+
+Request key: USK@ugGhE7lfI-QyFYL6yuZt7uyhlrVfvIRo0xkQxd2qV~c,L1bCwDm5Hh5qgqml7SBQcF85vL8IPvzN4WihjWIKH8I,AQACAAE/infocalypse-dvcs-over-freenet.R1/1
+
+The not-just-downloaded files (and dulwich) are in static/
+
+Currently the site gets parsed by pymarkdown_minisite, which is not yet included in this repo (⇒TODO: Add a small parser). Since it is not yet included, you can either edit the index.txt (preferred) or directly work on the static/index.html to add something to the site.
+
+Then just upload the static/ folder via freesitemgr (from pyFreenet) or jSite - and share the code via hg fn-create --uri INSERT_URI.
