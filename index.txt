@@ -16,14 +16,20 @@ Freenet development over Freenet
 *This will use the commandline on GNU/Linux. If you want to provide instructions for GUI users, feel free to fork this repo.*
 
 * Download the [infocalypse bootstrap bundle](infocalypse.bundle)
-* Init a repo somewhere: `hg init infocalypse`
-* Enter the repo: `cd infocalypse`
-* Pull und update from the bundle: `hg pull -u path/to/infocalypse.bundle`
-* Add infocalypse to your extensions: `echo >> ~/.hgrc`  
+* Init a repo somewhere:  
+`hg init infocalypse`
+* Enter the repo:  
+`cd infocalypse`
+* Pull und update from the bundle:  
+`hg pull -u path/to/infocalypse.bundle`
+* Add infocalypse to your extensions:  
+`echo >> ~/.hgrc`  
 `echo "[extensions]" >> ~/.hgrc`  
 `echo "infocalypse = " $(pwd)/infocalypse >> ~/.hgrc`
-* Setup infocalypse: `hg fn-setup`
-* Update the repo over freenet: `hg fn-pull --agressive --uri USK@kRM~jJVREwnN2qnA8R0Vt8HmpfRzBZ0j4rHC2cQ-0hw,2xcoQVdQLyqfTpF2DpkdUIbHFCeL4W~2X1phUYymnhM,AQACAAE/wiki_hacking.R1/19`  
+* Setup infocalypse:  
+`hg fn-setup`
+* Update the repo over freenet:  
+`hg fn-pull --agressive --uri USK@kRM~jJVREwnN2qnA8R0Vt8HmpfRzBZ0j4rHC2cQ-0hw,2xcoQVdQLyqfTpF2DpkdUIbHFCeL4W~2X1phUYymnhM,AQACAAE/wiki_hacking.R1/19`  
 
 Done. You just added freenet capabilities to your DVCS and updated the repo over freenet.
 
@@ -48,11 +54,12 @@ Done. You just added freenet capabilities to your DVCS and updated the repo over
 
 Get [hg-git](http://hg-git.github.com/) and [dulwich](http://www.samba.org/~jelmer/dulwich/). 
 
-* Request key for getting hg-git over freenet: USK@hRSO9yNEENHalLqm8KCjn0XCSk-DlLnALp4CaXunjLs,TNRUMEkbKtIPNJPf-HV9ykWl4cEcmIob3wFluZZzYGk,AQACAAE/hg-git.R1/1
+* Request key for getting hg-git over freenet:  
+USK@hRSO9yNEENHalLqm8KCjn0XCSk-DlLnALp4CaXunjLs,TNRUMEkbKtIPNJPf-HV9ykWl4cEcmIob3wFluZZzYGk,AQACAAE/hg-git.R1/1
 * [Dulwich 0.8.5 mirrored](dulwich-0.8.5.tar.gz). 
 
 * Enable the hg-git extension.
-* `hg clone git+ssh://git@github.com/USER/repo` # mind the slash after github.com!
+* `hg clone git://github.com/USER/repo.git` # mind the slash after github.com!
 * `cd repo`
 * `hg fn-genkey`
 * `hg fn-create --uri [the generated insert key]` # replace NAME with REPONAME.R1
