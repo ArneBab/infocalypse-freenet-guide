@@ -87,7 +87,7 @@ For installing and activating hg-git, let’s just ask the hg-git website:
 
 Now you can simply clone the repository
 
-    `hg clone git://github.com/freenet/lib-pyFreenet-staging.git`
+* `hg clone git://github.com/freenet/lib-pyFreenet-staging.git`
 
 #### And upload it to freenet
 
