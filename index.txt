@@ -65,7 +65,7 @@ USK@hRSO9yNEENHalLqm8KCjn0XCSk-DlLnALp4CaXunjLs,TNRUMEkbKtIPNJPf-HV9ykWl4cEcmIob
 * `hg fn-create --uri [the generated insert key]` # replace NAME with REPONAME.R1
 * Share the **request key**. Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.
 
-To get the changes back onto github, to the reverse:
+To get the changes back onto github, do the reverse:
 
 * `hg fn-pull --aggressive --uri SOME_REQUEST_KEY`
 * `hg push git+ssh://git@github.com/USER/repo.git`  
