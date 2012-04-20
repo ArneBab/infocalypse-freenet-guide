@@ -1,0 +1,92 @@
+Freenet development over Freenet
+================================
+
+*This is a brief guide for distributed development between anonymous and non-anonymous participants over freenet. I try to mirror all required content here.*
+
+## Base requirements (mirrors in brackets): 
+
+*These will be out of date, soon. But they should suffice for in-freenet development for a long time.*
+
+* [Freenet](http://freenetproject.org) (obviously not mirrored here :) )
+* [Python](http://python.org) ([Python 2.7.3 Windows Installer](python-2.7.3.msi), [Python 2.7.3 Windows X86-64 Installer](python-2.7.3.amd64.msi), [Python 2.7.3 Mac OS X 64-bit/32-bit x86-64/i386 Installer](python-2.7.3-macosx10.6.dmg), [Python 2.7.3 Mac OS X 32-bit i386/PPC Installer](python-2.7.3-macosx10.3.dmg), [Python 2.7.3 bzipped source tarball](), GNU/Linux users likely already have it. If not: `apt-get install python` or `emerge python`, …).
+* [Mercurial](http://mercurial.selenic.com) ([Windows x86](Mercurial-2.1.2.exe) [Windows 64bit](Mercurial-2.1.2-x64.exe) [MacOSX 10.6](Mercurial-2.1.2-py2.6-macosx10.6.zip) [MacOSX 10.7 and 10.8](Mercurial-2.1.2-py2.7-macosx10.7.zip) [Source](mercurial-2.1.2.tar.gz), GNU/Linux: `apt-get install mercurial` or `emerge mercurial`, …)
+
+## Get and install infocalypse
+
+*This will use the commandline on GNU/Linux. If you want to provide instructions for GUI users, feel free to fork this repo.*
+
+* Download the [infocalypse bootstrap bundle](infocalypse.bundle)
+* Init a repo somewhere: `hg init infocalypse`
+* Enter the repo: `cd infocalypse`
+* Pull und update from the bundle: `hg pull -u path/to/infocalypse.bundle`
+* Add infocalypse to your extensions: `echo >> ~/.hgrc`  
+`echo "[extensions]" >> ~/.hgrc`  
+`echo "infocalypse = " $(pwd)/infocalypse >> ~/.hgrc`
+* Setup infocalypse: `hg fn-setup`
+* Update the repo over freenet: `hg fn-pull --agressive --uri USK@kRM~jJVREwnN2qnA8R0Vt8HmpfRzBZ0j4rHC2cQ-0hw,2xcoQVdQLyqfTpF2DpkdUIbHFCeL4W~2X1phUYymnhM,AQACAAE/wiki_hacking.R1/19`  
+
+Done. You just added freenet capabilities to your DVCS and updated the repo over freenet.
+
+## Sharing a Mercurial code repo over freenet
+
+* `hg fn-genkey`
+* `hg fn-create --uri [the generated insert key]` # replace NAME with REPONAME.R1
+* Share the **request key**. Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.
+
+## Getting and forking a repo
+
+* `hg init REPO`
+* `cd REPO`
+* `hg fn-pull --aggressive --uri REQUEST_KEY`
+* `hg fn-genkey`
+* `hg fn-create --uri [the generated insert key]` # replace NAME with REPONAME.R1
+* Share the **request key**. Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.
+
+## Sharing a Github repo over freenet
+
+*Included here, because github is currently used as non-anonymous development platform.*
+
+Get [hg-git](http://hg-git.github.com/) and [dulwich](http://www.samba.org/~jelmer/dulwich/). 
+
+* Request key for getting hg-git over freenet: USK@hRSO9yNEENHalLqm8KCjn0XCSk-DlLnALp4CaXunjLs,TNRUMEkbKtIPNJPf-HV9ykWl4cEcmIob3wFluZZzYGk,AQACAAE/hg-git.R1/1
+* [Dulwich 0.8.5 mirrored](dulwich-0.8.5.tar.gz). 
+
+* Enable the hg-git extension.
+* `hg clone git+ssh://git@github.com/USER/repo` # mind the slash after github.com!
+* `cd repo`
+* `hg fn-genkey`
+* `hg fn-create --uri [the generated insert key]` # replace NAME with REPONAME.R1
+* Share the **request key**. Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.
+
+## Getting info on a repo
+
+`hg fn-info`
+
+## Making sure that a repo stays available
+
+*Content in freenet can fall out if it is not requested. These are tipps to make sure that repos you consider important stay available.*
+
+### Your own repo
+
+Reinsert it:
+
+* `for i in 1 2 3 4 5; do hg fn-reinsert --level $i; done`
+
+Get it in a new repo from time to time to ensure that it is still available:
+
+* `cd REPO`
+* `hg fn-info` # get the REQUEST_KEY
+* `hg init TMPREPO`
+* `cd TMPREPO`
+* `hg fn-pull --aggressive --uri REQUEST_KEY`
+
+If that should not work, just use `hg fn-create --uri INSERT_URI` again (with the key from hg fn-info.
+
+### Sponsoring the repo of someone else
+
+Reinsert all parts for which you do not need the insert key:
+
+* `for i in 2 3 5; do hg fn-reinsert --level $i; done`
+
+> level: 1 - re-inserts the top key(s) 2 - re-inserts the top keys(s), graphs(s) and the most recent update. 3 - re-inserts the top keys(s), graphs(s) and all keys required to bootstrap the repo. This is the default level. 4 - adds redundancy for big (>7Mb) updates. 5 - re-inserts existing redundant big updates.
+
