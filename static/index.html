@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Infocalypse: code sharing over Freenet</title>
+        <link rel="StyleSheet" href="style.css" type="text/css" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+    </head>
+    <body text='#903r09'>
+
+
+<h1 id="freenet-development-over-freenet">Freenet development over Freenet</h1>
+<p><em>This is a brief guide for distributed development between anonymous and non-anonymous participants over freenet. I try to mirror all required content here.</em></p>
+<h2 id="base-requirements-mirrors-in-brackets">Base requirements (mirrors in brackets):</h2>
+<p><em>These will be out of date, soon. But they should suffice for in-freenet development for a long time.</em></p>
+<ul>
+<li><a href="http://freenetproject.org">Freenet</a> (obviously not mirrored here :) )</li>
+<li><a href="http://python.org">Python</a> (<a href="python-2.7.3.msi">Python 2.7.3 Windows Installer</a>, <a href="python-2.7.3.amd64.msi">Python 2.7.3 Windows X86-64 Installer</a>, <a href="python-2.7.3-macosx10.6.dmg">Python 2.7.3 Mac OS X 64-bit/32-bit x86-64/i386 Installer</a>, <a href="python-2.7.3-macosx10.3.dmg">Python 2.7.3 Mac OS X 32-bit i386/PPC Installer</a>, <a href="">Python 2.7.3 bzipped source tarball</a>, GNU/Linux users likely already have it. If not: <code>apt-get install python</code> or <code>emerge python</code>, …).</li>
+<li><a href="http://mercurial.selenic.com">Mercurial</a> (<a href="Mercurial-2.1.2.exe">Windows x86</a> <a href="Mercurial-2.1.2-x64.exe">Windows 64bit</a> <a href="Mercurial-2.1.2-py2.6-macosx10.6.zip">MacOSX 10.6</a> <a href="Mercurial-2.1.2-py2.7-macosx10.7.zip">MacOSX 10.7 and 10.8</a> <a href="mercurial-2.1.2.tar.gz">Source</a>, GNU/Linux: <code>apt-get install mercurial</code> or <code>emerge mercurial</code>, …)</li>
+</ul>
+<h2 id="get-and-install-infocalypse">Get and install infocalypse</h2>
+<p><em>This will use the commandline on GNU/Linux. If you want to provide instructions for GUI users, feel free to fork this repo.</em></p>
+<ul>
+<li>Download the <a href="infocalypse.bundle">infocalypse bootstrap bundle</a></li>
+<li>Init a repo somewhere:<br />
+<code>hg init infocalypse</code></li>
+<li>Enter the repo:<br />
+<code>cd infocalypse</code></li>
+<li>Pull und update from the bundle:<br />
+<code>hg pull -u path/to/infocalypse.bundle</code></li>
+<li>Add infocalypse to your extensions:<br />
+<code>echo &gt;&gt; ~/.hgrc</code><br />
+<code>echo "[extensions]" &gt;&gt; ~/.hgrc</code><br />
+<code>echo "infocalypse = " $(pwd)/infocalypse &gt;&gt; ~/.hgrc</code></li>
+<li>Setup infocalypse:<br />
+<code>hg fn-setup</code></li>
+<li>Update the repo over freenet:<br />
+<code>hg fn-pull --agressive --uri USK@kRM~jJVREwnN2qnA8R0Vt8HmpfRzBZ0j4rHC2cQ-0hw,2xcoQVdQLyqfTpF2DpkdUIbHFCeL4W~2X1phUYymnhM,AQACAAE/wiki_hacking.R1/19</code><br />
+</li>
+</ul>
+<p>Done. You just added freenet capabilities to your DVCS and updated the repo over freenet.</p>
+<h2 id="sharing-a-mercurial-code-repo-over-freenet">Sharing a Mercurial code repo over freenet</h2>
+<ul>
+<li><code>hg fn-genkey</code></li>
+<li><code>hg fn-create --uri [the generated insert key]</code> # replace NAME with REPONAME.R1</li>
+<li>Share the <strong>request key</strong>. Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.</li>
+</ul>
+<h2 id="getting-and-forking-a-repo">Getting and forking a repo</h2>
+<ul>
+<li><code>hg init REPO</code></li>
+<li><code>cd REPO</code></li>
+<li><code>hg fn-pull --aggressive --uri REQUEST_KEY</code></li>
+<li><code>hg fn-genkey</code></li>
+<li><code>hg fn-create --uri [the generated insert key]</code> # replace NAME with REPONAME.R1</li>
+<li>Share the <strong>request key</strong>. Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.</li>
+</ul>
+<h2 id="sharing-a-github-repo-over-freenet">Sharing a Github repo over freenet</h2>
+<p><em>Included here, because github is currently used as non-anonymous development platform.</em></p>
+<p>Get <a href="http://hg-git.github.com/">hg-git</a> and <a href="http://www.samba.org/~jelmer/dulwich/">dulwich</a>. </p>
+<ul>
+<li>Request key for getting hg-git over freenet:<br />
+USK@hRSO9yNEENHalLqm8KCjn0XCSk-DlLnALp4CaXunjLs,TNRUMEkbKtIPNJPf-HV9ykWl4cEcmIob3wFluZZzYGk,AQACAAE/hg-git.R1/1</li>
+<li>
+<p><a href="dulwich-0.8.5.tar.gz">Dulwich 0.8.5 mirrored</a>. </p>
+</li>
+<li>
+<p>Enable the hg-git extension.</p>
+</li>
+<li><code>hg clone git://github.com/USER/repo.git</code> # mind the slash after github.com!</li>
+<li><code>cd repo</code></li>
+<li><code>hg fn-genkey</code></li>
+<li><code>hg fn-create --uri [the generated insert key]</code> # replace NAME with REPONAME.R1</li>
+<li>Share the <strong>request key</strong>. Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.</li>
+</ul>
+<h2 id="getting-info-on-a-repo">Getting info on a repo</h2>
+<p><code>hg fn-info</code></p>
+<h2 id="making-sure-that-a-repo-stays-available">Making sure that a repo stays available</h2>
+<p><em>Content in freenet can fall out if it is not requested. These are tipps to make sure that repos you consider important stay available.</em></p>
+<h3 id="your-own-repo">Your own repo</h3>
+<p>Reinsert it:</p>
+<ul>
+<li><code>for i in 1 2 3 4 5; do hg fn-reinsert --level $i; done</code></li>
+</ul>
+<p>Get it in a new repo from time to time to ensure that it is still available:</p>
+<ul>
+<li><code>cd REPO</code></li>
+<li><code>hg fn-info</code> # get the REQUEST_KEY</li>
+<li><code>hg init TMPREPO</code></li>
+<li><code>cd TMPREPO</code></li>
+<li><code>hg fn-pull --aggressive --uri REQUEST_KEY</code></li>
+</ul>
+<p>If that should not work, just use <code>hg fn-create --uri INSERT_URI</code> again (with the key from hg fn-info.</p>
+<h3 id="sponsoring-the-repo-of-someone-else">Sponsoring the repo of someone else</h3>
+<p>Reinsert all parts for which you do not need the insert key:</p>
+<ul>
+<li><code>for i in 2 3 5; do hg fn-reinsert --level $i; done</code></li>
+</ul>
+<blockquote>
+<p>level: 1 - re-inserts the top key(s) 2 - re-inserts the top keys(s), graphs(s) and the most recent update. 3 - re-inserts the top keys(s), graphs(s) and all keys required to bootstrap the repo. This is the default level. 4 - adds redundancy for big (&gt;7Mb) updates. 5 - re-inserts existing redundant big updates.</p>
+</blockquote>
+<h2 id="contributing-to-this-guide">Contributing to this guide</h2>
+<p>If you wish to contribute, just clone and fork this repo. </p>
+<p>Request key: USK@ugGhE7lfI-QyFYL6yuZt7uyhlrVfvIRo0xkQxd2qV~c,L1bCwDm5Hh5qgqml7SBQcF85vL8IPvzN4WihjWIKH8I,AQACAAE/infocalypse-dvcs-over-freenet.R1/1</p>
+<p>The not-just-downloaded files (and dulwich) are in static/</p>
+<p>Currently the site gets parsed by pymarkdown_minisite, which is not yet included in this repo (⇒TODO: Add a small parser). Since it is not yet included, you can either edit the index.txt (preferred) or directly work on the static/index.html to add something to the site.</p>
+<p>Then just upload the static/ folder via freesitemgr (from pyFreenet) or jSite - and share the code via hg fn-create --uri INSERT_URI.</p>
+<a href='index.html'>Infocalypse: code sharing over Freenet</a>
+<hr>
+<p> -- <em>2012-04-20 09:58:30</em> -- </p><hr>
+<p>Created with <a href="http://rakjar.de/pymarkdown_minisite/index.html">pyMarkdown Minisite</a> 
+<br />using the layout from the <a href="http://pybrary.net">pybrary</a>.</p>
+</body></html>
