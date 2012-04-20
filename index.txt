@@ -104,6 +104,9 @@ Reinsert all parts for which you do not need the insert key:
 
 > level: 1 - re-inserts the top key(s) 2 - re-inserts the top keys(s), graphs(s) and the most recent update. 3 - re-inserts the top keys(s), graphs(s) and all keys required to bootstrap the repo. This is the default level. 4 - adds redundancy for big (>7Mb) updates. 5 - re-inserts existing redundant big updates.
 
+## Getting additional information on infocalypse
+
+`hg help infocalypse`
 
 ## Contributing to this guide
 
