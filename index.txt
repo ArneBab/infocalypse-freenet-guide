@@ -68,7 +68,7 @@ USK@hRSO9yNEENHalLqm8KCjn0XCSk-DlLnALp4CaXunjLs,TNRUMEkbKtIPNJPf-HV9ykWl4cEcmIob
 To get the changes back onto github, to the reverse:
 
 * `hg fn-pull --aggressive --uri SOME_REQUEST_KEY`
-* `hg push git+ssh://github.com/USER/repo.git`  
+* `hg push git+ssh://git@github.com/USER/repo.git`  
 mind the slash after github.com!  
 You have to have a github account with SSH for this.
 
