@@ -110,6 +110,8 @@ To get a repo, we first initialize an empty repo and then use infocalypse to pul
 * `cd REPO`
 * `hg fn-pull --aggressive --uri USK@-sEkUkv7SClGNhjpvFF9TtmGHnoiwvThkepMUTy7Fh4,Rciq6x0804hb~rNzxmINfkuSCgAEvHZjJNHQcUo0nuQ,AQACAAE/pyfreenet.R1/0`
 
+*(And wait a bit. For me this call on a test repo took 3 and a half minutes)*
+
 *--aggressive tells infocalypse to search harder for the most current USK revision.*
 
 Then we hack on the repo (if you are more comfortable with git than with Mercurial, you can use hg-git to push it to a git repo and pull back the changes once you are done).
