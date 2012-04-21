@@ -91,7 +91,7 @@ Now you can simply clone the repository
 
 #### And upload it to freenet
 
-* `cd repo`
+* `cd lib-pyFreenet-staging`
 * `hg fn-genkey`
 * `hg fn-create --uri [the generated insert key]` # replace NAME with pyFreenet.R1
 
