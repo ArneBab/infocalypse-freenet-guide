@@ -42,6 +42,7 @@ Anonymous coders can then use infocalypse to retrieve the repositories from free
 `hg fn-setup`
 * Update the repo over freenet:  
 `hg fn-pull --agressive --uri USK@kRM~jJVREwnN2qnA8R0Vt8HmpfRzBZ0j4rHC2cQ-0hw,2xcoQVdQLyqfTpF2DpkdUIbHFCeL4W~2X1phUYymnhM,AQACAAE/wiki_hacking.R1/19`  
+`hg fn-pull --agressive --uri USK@j2Mfv0b81MNSslh3Qg9gs1vgQj36whsuosP8ydZq158,Xb~vh8XEXmdwGFca4HAx-ILOZD6AWPVuRzIuLerl4PU,AQACAAE/infocalypse-repo.R1/16`  
 
 Done. You just added freenet capabilities to your DVCS and updated the repo over freenet.
 
