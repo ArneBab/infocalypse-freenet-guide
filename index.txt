@@ -25,7 +25,7 @@ Anonymous coders can then use infocalypse to retrieve the repositories from free
 
 ### Get and install infocalypse
 
-*This will use the commandline on GNU/Linux. If you want to provide instructions for GUI users, feel free to fork this repo.*
+*This will use the commandline on GNU/Linux. If you want to provide instructions for GUI users, feel free to fork [this repo](/USK@ugGhE7lfI-QyFYL6yuZt7uyhlrVfvIRo0xkQxd2qV~c,L1bCwDm5Hh5qgqml7SBQcF85vL8IPvzN4WihjWIKH8I,AQACAAE/infocalypse-dvcs-over-freenet.R1/10).*
 
 * Download the [infocalypse bootstrap bundle](infocalypse-bootstrap-2014-05-07.bundle)
 * Init a repo somewhere:  
@@ -234,7 +234,7 @@ Reinsert all parts for which you do not need the insert key:
 
 If you wish to contribute, just clone and fork this repo. 
 
-Request key: USK@ugGhE7lfI-QyFYL6yuZt7uyhlrVfvIRo0xkQxd2qV~c,L1bCwDm5Hh5qgqml7SBQcF85vL8IPvzN4WihjWIKH8I,AQACAAE/infocalypse-dvcs-over-freenet.R1/1
+Request key: USK@ugGhE7lfI-QyFYL6yuZt7uyhlrVfvIRo0xkQxd2qV~c,L1bCwDm5Hh5qgqml7SBQcF85vL8IPvzN4WihjWIKH8I,AQACAAE/infocalypse-dvcs-over-freenet.R1/10
 
 The not-just-downloaded files (and dulwich) are in static/
 
