@@ -27,13 +27,13 @@ Anonymous coders can then use infocalypse to retrieve the repositories from free
 
 *This will use the commandline on GNU/Linux. If you want to provide instructions for GUI users, feel free to fork this repo.*
 
-* Download the [infocalypse bootstrap bundle](infocalypse.bundle)
+* Download the [infocalypse bootstrap bundle](infocalypse-bootstrap-2014-05-07.bundle)
 * Init a repo somewhere:  
 `hg init infocalypse`
 * Enter the repo:  
 `cd infocalypse`
 * Pull und update from the bundle:  
-`hg pull -u path/to/infocalypse.bundle`
+`hg pull -u path/to/infocalypse-bootstrap-2014-05-07.bundle`
 * Add infocalypse to your extensions:  
 `echo >> ~/.hgrc`  
 `echo "[extensions]" >> ~/.hgrc`  
