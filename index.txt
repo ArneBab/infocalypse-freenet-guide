@@ -218,7 +218,11 @@ Get it in a new repo from time to time to ensure that it is still available:
 * `cd TMPREPO`
 * `hg fn-pull --aggressive --uri REQUEST_KEY`
 
-If that should not work, just use `hg fn-create --uri INSERT_URI` again (with the key from hg fn-info.
+### Unbreak a repo
+
+If a repository becomes really unretrievable, you can simply recreate it:
+
+Just use `hg fn-create --uri INSERT_URI` again (with the key from hg fn-info).
 
 #### Sponsoring the repo of someone else
 
