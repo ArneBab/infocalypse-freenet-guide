@@ -218,7 +218,7 @@ Get it in a new repo from time to time to ensure that it is still available:
 * `cd TMPREPO`
 * `hg fn-pull --aggressive --uri REQUEST_KEY`
 
-### Unbreak a repo
+#### Unbreak a repo
 
 If a repository becomes really unretrievable, you can simply recreate it:
 
