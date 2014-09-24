@@ -143,8 +143,9 @@ You have to have a github account with SSH for this.
 
 ### Hacking on the main freenet repo
 
-If you want to hack directly on fred, you can get it with the following key:  
-USK@3Xvf~RI-N8YC-xFtQIEnEwR~ZLC05UhQjQzKAS0lL4Y,PqTg9Y5Me6~WthiW5FoHG9Mq18c7oRbe0owRutJJJZc,AQACAAE/fred1.R1/70
+If you want to hack directly on fred, you can get it with the following key:  **Fred now has a subrepo which BREAKS YOUR ANONYMITY if you clone because it gets Mercurial to access Github. If you really, really want to do this before we resolved this, look at the sourcecode of this site.** *If you want to help fix this, please contact ArneBab via IRC #freenet @ irc.freenode.net*
+
+<!--USK@3Xvf~RI-N8YC-xFtQIEnEwR~ZLC05UhQjQzKAS0lL4Y,PqTg9Y5Me6~WthiW5FoHG9Mq18c7oRbe0owRutJJJZc,AQACAAE/fred1.R1/120-->
 
 It is uploaded once a week. Nag ArneBab on Sone if something breaks :)
 
