@@ -119,8 +119,9 @@ mind the slash after github.com!<br />
 You have to have a github account with SSH for this.</li>
 </ul>
 <h3 id="hacking-on-the-main-freenet-repo">Hacking on the main freenet repo</h3>
-<p>If you want to hack directly on fred, you can get it with the following key:<br />
-USK@3Xvf~RI-N8YC-xFtQIEnEwR~ZLC05UhQjQzKAS0lL4Y,PqTg9Y5Me6~WthiW5FoHG9Mq18c7oRbe0owRutJJJZc,AQACAAE/fred1.R1/70</p>
+<p>If you want to hack directly on fred, you can get it with the following key:  <strong>Fred now has a subrepo which BREAKS YOUR ANONYMITY if you clone because it gets Mercurial to access Github. If you really, really want to do this before we resolved this, look at the sourcecode of this site.</strong> <em>If you want to help fix this, please contact ArneBab via IRC #freenet @ irc.freenode.net</em></p>
+<!--USK@3Xvf~RI-N8YC-xFtQIEnEwR~ZLC05UhQjQzKAS0lL4Y,PqTg9Y5Me6~WthiW5FoHG9Mq18c7oRbe0owRutJJJZc,AQACAAE/fred1.R1/120-->
+
 <p>It is uploaded once a week. Nag ArneBab on Sone if something breaks :)</p>
 <h2 id="common-tasks">Common tasks</h2>
 <p><em>(some repetition to come)</em></p>
@@ -185,7 +186,9 @@ You have to have a github account with SSH for this.</li>
 <li><code>cd TMPREPO</code></li>
 <li><code>hg fn-pull --aggressive --uri REQUEST_KEY</code></li>
 </ul>
-<p>If that should not work, just use <code>hg fn-create --uri INSERT_URI</code> again (with the key from hg fn-info.</p>
+<h4 id="unbreak-a-repo">Unbreak a repo</h4>
+<p>If a repository becomes really unretrievable, you can simply recreate it:</p>
+<p>Just use <code>hg fn-create --uri INSERT_URI</code> again (with the key from hg fn-info).</p>
 <h4 id="sponsoring-the-repo-of-someone-else">Sponsoring the repo of someone else</h4>
 <p>Reinsert all parts for which you do not need the insert key:</p>
 <ul>
@@ -201,7 +204,7 @@ You have to have a github account with SSH for this.</li>
 <p>Then just upload the static/ folder via freesitemgr (from pyFreenet) or jSite - and share the code via hg fn-create --uri INSERT_URI.</p>
 <a href='index.html'>Infocalypse: code sharing over Freenet</a>
 <hr>
-<p> -- <em>2014-07-05 00:35:20</em> -- </p><hr>
+<p> -- <em>2014-09-24 09:03:40</em> -- </p><hr>
 <p>Created with <a href="http://rakjar.de/pymarkdown_minisite/index.html">pyMarkdown Minisite</a> 
 <br />using the layout from the <a href="http://pybrary.net">pybrary</a>.</p>
 </body></html>
