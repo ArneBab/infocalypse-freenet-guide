@@ -50,11 +50,30 @@
 <p>To contribute to a project anonymously, you need someone who uploads the repository into freenet (lets call him core devel) and someone who can get your changes back to the core devs, for example by pushing them onto github.</p>
 <p>So we can break up contributing into 3 tasks: </p>
 <ol>
-<li>Mirroring freenet repos from github into freenet,</li>
 <li>Getting and forking repos from freenet and</li>
+<li>Mirroring freenet repos from github into freenet,</li>
 <li>Transferring the changes back onto github.</li>
 </ol>
 <p>As an example we will do that with the pyFreenet repo (since inserting and downloading the fred-repo takes some time).</p>
+<h3 id="getting-and-forking-repos-from-freenet">Getting and forking repos from freenet</h3>
+<p>To get a repo, we first initialize an empty repo and then use infocalypse to pull the changes from the given REQUEST_KEY:</p>
+<ul>
+<li><code>hg init REPO</code></li>
+<li><code>cd REPO</code></li>
+<li><code>hg fn-pull --aggressive --uri USK@-sEkUkv7SClGNhjpvFF9TtmGHnoiwvThkepMUTy7Fh4,Rciq6x0804hb~rNzxmINfkuSCgAEvHZjJNHQcUo0nuQ,AQACAAE/pyfreenet.R1/0</code></li>
+</ul>
+<p><em>(And wait a bit. For me this call on a test repo took 3 and a half minutes)</em></p>
+<p><em>--aggressive tells infocalypse to search harder for the most current USK revision.</em></p>
+<p>Then we hack on the repo (if you are more comfortable with git than with Mercurial, you can use hg-git to push it to a git repo and pull back the changes once you are done).</p>
+<p>To share our work, we push the code back into freenet:</p>
+<ul>
+<li><code>hg fn-genkey</code></li>
+<li><code>hg fn-create --uri [the generated insert key]</code> # replace NAME with REPONAME.R1</li>
+</ul>
+<p>This gives us ANOTHER_REQUEST_KEY.</p>
+<p>Now share the <strong>request key</strong>.<br />
+<em>Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.</em></p>
+<p><em>If you want to get a notice when a repo gets updated, just bookmark it like any other freesite and fred will keep you up to date.</em></p>
 <h3 id="mirroring-freenet-repos-from-github-into-freenet">Mirroring freenet repos from github into freenet</h3>
 <p><em>Shown with the example of pyFreenet.</em></p>
 <h4 id="requirements">Requirements</h4>
@@ -90,25 +109,6 @@ hggit =
 <code>USK@-sEkUkv7SClGNhjpvFF9TtmGHnoiwvThkepMUTy7Fh4,Rciq6x0804hb~rNzxmINfkuSCgAEvHZjJNHQcUo0nuQ,AQACAAE/pyfreenet.R1/0</code></p>
 <p>Share the <strong>request key</strong> to enable others to get the repo. </p>
 <p><em>Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.</em></p>
-<h3 id="getting-and-forking-repos-from-freenet-and">Getting and forking repos from freenet and</h3>
-<p>To get a repo, we first initialize an empty repo and then use infocalypse to pull the changes from the given REQUEST_KEY:</p>
-<ul>
-<li><code>hg init REPO</code></li>
-<li><code>cd REPO</code></li>
-<li><code>hg fn-pull --aggressive --uri USK@-sEkUkv7SClGNhjpvFF9TtmGHnoiwvThkepMUTy7Fh4,Rciq6x0804hb~rNzxmINfkuSCgAEvHZjJNHQcUo0nuQ,AQACAAE/pyfreenet.R1/0</code></li>
-</ul>
-<p><em>(And wait a bit. For me this call on a test repo took 3 and a half minutes)</em></p>
-<p><em>--aggressive tells infocalypse to search harder for the most current USK revision.</em></p>
-<p>Then we hack on the repo (if you are more comfortable with git than with Mercurial, you can use hg-git to push it to a git repo and pull back the changes once you are done).</p>
-<p>To share our work, we push the code back into freenet:</p>
-<ul>
-<li><code>hg fn-genkey</code></li>
-<li><code>hg fn-create --uri [the generated insert key]</code> # replace NAME with REPONAME.R1</li>
-</ul>
-<p>This gives us ANOTHER_REQUEST_KEY.</p>
-<p>Now share the <strong>request key</strong>.<br />
-<em>Never share the insert key, except if you want to pass on maintenance of your in-freenet repo.</em></p>
-<p><em>If you want to get a notice when a repo gets updated, just bookmark it like any other freesite and fred will keep you up to date.</em></p>
 <h3 id="transferring-the-changes-back-onto-github">Transferring the changes back onto github.</h3>
 <p>To get the changes back onto github, we simply do the reverse path of getting the repo from github: Pull from freenet, then push to github. But this time we use an authenticated ssh connection for interacting with github. </p>
 <p>So essentially, you need to contact a core dev and ask him to do the following:</p>
@@ -204,7 +204,7 @@ You have to have a github account with SSH for this.</li>
 <p>Then just upload the static/ folder via freesitemgr (from pyFreenet) or jSite - and share the code via hg fn-create --uri INSERT_URI.</p>
 <a href='index.html'>Infocalypse: code sharing over Freenet</a>
 <hr>
-<p> -- <em>2014-09-24 09:03:40</em> -- </p><hr>
+<p> -- <em>2014-09-24 10:26:26</em> -- </p><hr>
 <p>Created with <a href="http://rakjar.de/pymarkdown_minisite/index.html">pyMarkdown Minisite</a> 
 <br />using the layout from the <a href="http://pybrary.net">pybrary</a>.</p>
 </body></html>
